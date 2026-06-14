@@ -1,0 +1,52 @@
+# ============================================================
+# AI News Daily - Config
+# ============================================================
+timezone: "Asia/Shanghai"
+
+# Push channel preference (first enabled wins)
+push_channel:
+  - feishu
+  - wecom
+  - telegram
+  - email
+
+# LLM
+llm:
+  model: "deepseek/deepseek-chat"
+  temperature: 0.4
+  timeout_seconds: 120
+
+# Ranking / filtering
+ranker:
+  max_items_per_section: 10
+  dedup_similarity_threshold: 0.75
+  source_weight_overrides: {}
+  brand_boost_overrides: {}
+
+# Data freshness
+lookback_hours: 24
+
+# Feeds / sources
+sources:
+  # If your RSSHub public instance blocks you, set your own:
+  # rsshub_base: "https://rss.example.com"
+  enabled:
+    - hackernews
+    - hackernews_ai_trending
+    - github_trending
+    - product_hunt
+    - reddit
+    - google_news
+    - curated_rss
+    - youtube
+    - rsshub
+  # add extra RSS feeds here for CuratedRSSCollector:
+  extra_rss_feeds: []
+  # add extra rsshub routes:
+  extra_rsshub_routes: []
+
+# Output
+output:
+  save_raw_json: true
+  save_report_md: true
+  dir: "./data/ai-news-daily"
